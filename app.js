@@ -34,7 +34,13 @@ let categories = [
 ];
 
 let tasks = [
-// Add more tasks for each category as desired
+  {
+    id:1,
+    task : "Do not delete this Task",
+    category : "Personal",
+    completed : false,
+  },
+ // Add more tasks for each category as desired
 ];
 
 // Define functions
@@ -44,10 +50,9 @@ const saveLocal = () => {
 
 const getLocal = () => {
   const tasksLocal = JSON.parse(localStorage.getItem("tasks"));
-  if (tasksLocal) {
-    tasks = tasksLocal;
-  }
+  tasks = tasksLocal ? tasksLocal : [];
 };
+
 
 const toggleScreen = () => {
   screenWrapper.classList.toggle("show-category");
@@ -184,11 +189,12 @@ const renderTasks = () => {
         tasks.splice(index, 1);
         saveLocal();
         renderTasks();
+        renderCategories();
+        updateTotals();
       });
     });
 
-    renderCategories();
-    updateTotals();
+    
   }
 };
 
@@ -197,6 +203,8 @@ const toggleAddTaskForm = () => {
   blackBackdrop.classList.toggle("active");
   addTaskBtn.classList.toggle("active");
 };
+
+
 
 const addTask = (e) => {
   e.preventDefault();
@@ -219,6 +227,7 @@ const addTask = (e) => {
     renderTasks();
   }
 };
+
 
 // Initialize variables and DOM elements
 let selectedCategory = categories[0];
