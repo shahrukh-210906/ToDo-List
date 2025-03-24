@@ -36,8 +36,8 @@ let categories = [
 let tasks = [
   {
     id: 1,
-    task: "Go to market",
-    category: "Shopping",
+    task: "Do not delete this task...",
+    category: "Personal",
     completed: false,
   },
   // Add more tasks for each category as desired
