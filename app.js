@@ -34,12 +34,6 @@ let categories = [
 ];
 
 let tasks = [
-  {
-    id:1,
-    task : "Do not delete this Task",
-    category : "Personal",
-    completed : false,
-  },
  // Add more tasks for each category as desired
 ];
 
@@ -50,9 +44,10 @@ const saveLocal = () => {
 
 const getLocal = () => {
   const tasksLocal = JSON.parse(localStorage.getItem("tasks"));
-  tasks = tasksLocal ? tasksLocal : [];
+  if (tasksLocal) {
+    tasks = tasksLocal;
+  }
 };
-
 
 const toggleScreen = () => {
   screenWrapper.classList.toggle("show-category");
@@ -204,8 +199,6 @@ const toggleAddTaskForm = () => {
   addTaskBtn.classList.toggle("active");
 };
 
-
-
 const addTask = (e) => {
   e.preventDefault();
   const task = taskInput.value;
@@ -227,7 +220,6 @@ const addTask = (e) => {
     renderTasks();
   }
 };
-
 
 // Initialize variables and DOM elements
 let selectedCategory = categories[0];
