@@ -34,7 +34,13 @@ let categories = [
 ];
 
 let tasks = [
- // Add more tasks for each category as desired
+  {
+    id: 1,
+    task: "Go to market",
+    category: "Shopping",
+    completed: false,
+  },
+  // Add more tasks for each category as desired
 ];
 
 // Define functions
@@ -184,12 +190,11 @@ const renderTasks = () => {
         tasks.splice(index, 1);
         saveLocal();
         renderTasks();
-        renderCategories();
-        updateTotals();
       });
     });
 
-    
+    renderCategories();
+    updateTotals();
   }
 };
 
